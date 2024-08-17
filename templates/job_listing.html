@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-dark">Job Listings</h2>
+    <ul class="list-group mt-3">
+        {% for job in jobs %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ job.title }}
+            <a href="{{ url_for('apply_job', job_id=loop.index0) }}" class="btn btn-custom">Apply</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

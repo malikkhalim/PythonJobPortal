@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-dark">Add a New Course</h2>
+<form method="post" class="mt-3">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.title.label(class="form-label") }}
+        {{ form.title(class="form-control", placeholder="Enter course title") }}
+        {% for error in form.title.errors %}
+        <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+    </div>
+    {{ form.submit(class="btn btn-custom") }}
+</form>
+{% endblock %}

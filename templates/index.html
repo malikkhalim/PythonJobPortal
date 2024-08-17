@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to the Job Portal!</h1>
+    <p class="lead">Your gateway to new opportunities.</p>
+    <hr class="my-4">
+    <p>Manage your profile to find and apply for jobs or enroll in courses.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('profile') }}" role="button">Get Started</a>
+</div>
+{% endblock %}

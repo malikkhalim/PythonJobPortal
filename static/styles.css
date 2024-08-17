@@ -1,0 +1,49 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+form {
+    max-width: 500px;
+    margin: auto;
+}
+
+label, input, textarea, button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+button {
+    background-color: #333;
+    color: white;
+    border: none;
+}
+
+.navbar {
+    background-color: #a3d6d6;
+}
+.navbar-brand, .navbar-nav .nav-link {
+    color: #333333 !important;
+}
+.btn-custom {
+    background-color: #FF7F50;
+    color: #fff;
+}
+.btn-custom:hover {
+    background-color: #ff6347;
+}

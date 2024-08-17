@@ -1,0 +1,1 @@
+pip install flask-login flask-wtf werkzeug

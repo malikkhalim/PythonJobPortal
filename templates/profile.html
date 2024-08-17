@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-dark">Profile</h2>
+
+    <h3 class="text-dark mt-5">Change Password</h3>
+    <form method="post" action="{{ url_for('profile') }}" class="mt-3">
+        {{ password_form.hidden_tag() }}
+        <div class="mb-3">
+            {{ password_form.current_password.label(class="form-label") }}
+            {{ password_form.current_password(class="form-control", placeholder="Enter current password") }}
+            {% for error in password_form.current_password.errors %}
+            <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            {{ password_form.new_password.label(class="form-label") }}
+            {{ password_form.new_password(class="form-control", placeholder="Enter new password") }}
+            {% for error in password_form.new_password.errors %}
+            <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            {{ password_form.confirm_password.label(class="form-label") }}
+            {{ password_form.confirm_password(class="form-control", placeholder="Confirm new password") }}
+            {% for error in password_form.confirm_password.errors %}
+            <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        {{ password_form.submit(class="btn btn-custom") }}
+    </form>
+
+    <h3 class="text-dark mt-4">Applied Job</h3>
+    <ul class="list-group mt-3">
+        {% for job in jobs %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ job.title }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3 class="text-dark mt-5">Applied Courses</h3>
+    <ul class="list-group mt-3">
+        {% for course in courses %}
+        <li class="list-group-item">{{ course.title }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

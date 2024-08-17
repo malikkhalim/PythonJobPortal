@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-dark">Admin Panel</h2>
+    
+    <h3 class="text-dark mt-4">Job Listings</h3>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Requirements</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ job.title }}</td>
+                <td>{{ job.description }}</td>
+                <td>{{ job.requirements }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3 class="text-dark mt-5">Transaction Records</h3>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Transaction</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ transaction }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3 class="text-dark mt-5">Add a New Course</h3>
+    <form method="post" action="{{ url_for('add_course') }}" class="mt-3">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.title.label(class="form-label") }}
+            {{ form.title(class="form-control", placeholder="Enter course title") }}
+            {% for error in form.title.errors %}
+            <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        {{ form.submit(class="btn btn-custom") }}
+    </form>
+
+    <h3 class="text-dark mt-5">Post a Job</h3>
+    <form method="post" action="{{ url_for('post_job') }}" class="mt-3">
+        {{ job_form.hidden_tag() }}
+        <div class="mb-3">
+            {{ job_form.title.label(class="form-label") }}
+            {{ job_form.title(class="form-control", placeholder="Enter job title") }}
+            {% for error in job_form.title.errors %}
+            <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            {{ job_form.description.label(class="form-label") }}
+            {{ job_form.description(class="form-control", rows="3", placeholder="Enter job description") }}
+            {% for error in job_form.description.errors %}
+            <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            {{ job_form.requirements.label(class="form-label") }}
+            {{ job_form.requirements(class="form-control", rows="3", placeholder="Enter job requirements") }}
+            {% for error in job_form.requirements.errors %}
+            <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+        {{ job_form.submit(class="btn btn-custom") }}
+    </form>
+</div>
+{% endblock %}
